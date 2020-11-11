@@ -1,108 +1,80 @@
 #Calculadora Personalizada
-#1 - Soma
-#2 - Subtração
-#3 - Multiplicacao
-#4 - Divisao
-#5 - R = (V,I)
-#6 - V = (r,I)
-#7 - I = (V,R)
-#8 - Req = serie
-#9 - Req = paralelo
-#10 - Potencia (R,I)
 
-def exibir_menu():
-  print("Menu Calculadora:")
-  print("1 - Somar")
-  print("2 - Subtrair")
-  print("3 - Multiplicar")
-  print("4 - Dividir")
-  print('5 - R = (V,I)')
-  print('6 - V = (r,I)')
-  print('7 - I = (V,R)')
-  print('8 - Req = serie')
-  print('9 - Req = paralelo')
-  print('10 - Potencia (R,I)')
+def xyz_menu():
+  print('1 - Resistência')
+  print('2 - Tensão')
+  print('3 - Corrente')
+  print('4 - Resistência Equivalente de circuito em Série')
+  print('5 - Resistência Equivalente de circuito em Paralelo')
+  print('6 - Potência')
   print("0 - Sair")
 
-def somar(numero1, numero2):
-  return numero1+numero2
+def xyz_soma(j_n1, j_n2):
+  return (j_n1 + j_n2)
 
-def subtrair(numero1, numero2):
-  return numero1-numero2
+def xyz_subtracao(j_n1, j_n2):
+  return (j_n1 - j_n2)
 
-def multiplicar(numero1, numero2):
-  return numero1*numero2
+def xyz_multiplicacao(j_n1, j_n2):
+  return (j_n1 * j_n2)
 
-def dividir(numero1, numero2):
-  if numero2 != 0:
-    return numero1/numero2
+def xyz_divisao(j_n1, j_n2):
+  if j_n2 != 0:
+    return (j_n1 / j_n2)
   else:
-    return "Divisão por zero!"
+    return "Impossível dividir por zero..."
 
-def ohm1(tensao, corrente):
-  return dividir(tensao, corrente)
+def xyz_resistencia(j_tensao, j_corrente):
+  return xyz_divisao(j_tensao, j_corrente)
 
-def ohm2(resistencia, corrente):
-  return multiplicar(resistencia, corrente)
+def xyz_tensao(j_resistencia, j_corrente):
+  return xyz_multiplicacao(j_resistencia, j_corrente)
 
-def ohm3(tensao, resistencia):
-  return dividir(tensao, resistencia)
+def xyz_corrente(j_tensao, j_resistencia):
+  return xyz_divisao(j_tensao, j_resistencia)
 
-def potencia(resistencia, corrente):
-  return resistencia * (corrente**2)
+def xyz_potencia(j_res, j_corrente):
+  return (j_res*(j_corrente**2))
 
-def serie(resistencia1, resistencia2):
-  return somar(resistencia1, resistencia2)
+def xyz_serie(j_res_1, j_res_2):
+  return xyz_soma(j_res_1, j_res_2)
 
-def paralelo(resistencia1, resistencia2):
-  return multiplicar(resistencia1, resistencia2)/somar(resistencia1, resistencia2)
+def xyz_paralelo(j_res_1, j_res_2):
+  return xyz_divisao( (xyz_multiplicacao(j_res_1, j_res_2)) / (xyz_soma(j_res_1, j_res_2)) )
+  #return xyz_multiplicacao(j_res_1, j_res_2)/xyz_soma(j_res_1, j_res_2)
 
-def ler_dois_numeros():
-  n1 = float(input("Numero 1:"))
-  n2 = float(input("Numero 2:"))
-  return n1,n2
+def xyz_numeros():
+  n_1 = float(input("Numero 1:"))
+  n_2 = float(input("Numero 2:"))
+  return n_1,n_2
 
 #Programa principal
 import os
 continuar = True
 while continuar == True:
-  os.system("clear") #No windows - cls
-  exibir_menu()
-  opcao = int(input("Opcao:"))
+  os.system("clear")
+  xyz_menu()
+  opcao = int(input("Opcao: "))
   if opcao == 1:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", somar(n1,n2))
+    n_1,n_2 = xyz_numeros()
+    print("Resultado: ", xyz_resistencia(n_1,n_2))
   elif opcao == 2:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", subtrair(n1,n2))
+    n_1,n_2 = xyz_numeros()
+    print("Resultado: ", xyz_tensao(n_1,n_2))
   elif opcao == 3:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", multiplicar(n1,n2))
+    n_1,n_2 = xyz_numeros()
+    print("Resultado: ", xyz_corrente(n_1,n_2))
   elif opcao == 4:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", dividir(n1,n2))
+    n_1,n_2 = xyz_numeros()
+    print("Resultado: ", xyz_serie(n_1,n_2))
   elif opcao == 5:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", ohm1(n1,n2))
+    n_1,n_2 = xyz_numeros()
+    print("Resultado: ", xyz_paralelo(n_1,n_2))
   elif opcao == 6:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", ohm2(n1,n2))
-  elif opcao == 7:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", ohm3(n1,n2))
-  elif opcao == 8:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", serie(n1,n2))
-  elif opcao == 9:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", paralelo(n1,n2))
-  elif opcao == 10:
-    n1,n2 = ler_dois_numeros()
-    print("Resultado:", potencia(n1,n2))
+    n_1,n_2 = xyz_numeros()
+    print("Resultado: ", xyz_potencia(n_1,n_2))
   elif opcao == 0:
     continuar = False
   else:
     print("Opcao Invalida!")
   input("Pressione enter para continuar")
-
-  #tirar e mudar
