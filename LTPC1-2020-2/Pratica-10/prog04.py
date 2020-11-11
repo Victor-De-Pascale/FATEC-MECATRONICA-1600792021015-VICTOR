@@ -40,13 +40,13 @@ def xyz_serie(j_res_1, j_res_2):
   return xyz_soma(j_res_1, j_res_2)
 
 def xyz_paralelo(j_res_1, j_res_2):
-  return xyz_divisao( (xyz_multiplicacao(j_res_1, j_res_2)) / (xyz_soma(j_res_1, j_res_2)) )
+  return xyz_divisao(xyz_multiplicacao(j_res_1, j_res_2), xyz_soma(j_res_1, j_res_2))
   #return xyz_multiplicacao(j_res_1, j_res_2)/xyz_soma(j_res_1, j_res_2)
 
 def xyz_numeros():
-  n_1 = float(input("Numero 1:"))
-  n_2 = float(input("Numero 2:"))
-  return n_1,n_2
+  v_1 = float(input("Valor 1: "))
+  v_2 = float(input("Valor 2: "))
+  return v_1,v_2
 
 #Programa principal
 import os
