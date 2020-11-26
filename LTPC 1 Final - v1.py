@@ -2,9 +2,6 @@
 #quando um usuario fizer um pagamento, o receptor recebera a informacao
 #do valor e da string qrcode.
 
-#cada usuario deve ter o usuario(q sera o nome dele), uma senha e um email.
-
-#cada conta devera ter um ID e um saldo
 
 
 
@@ -123,13 +120,17 @@ while c_fim_do_programa == False:
     
       input("Pressione qlqr tecla pra continuar...")
       os.system("clear")
-      xyz_op = input("Deseja continuar adicionando nomes? (s/n) ")
+      xyz_op = input("Deseja continuar adicionando usuarios? (s/n) ")
       if xyz_op != "s":
         cf_continuar = False
     
   
   elif d_op == 0:
     c_fim_do_programa = True
+
+  else:
+    os.system("clear")
+    input("Opção Inválida! pressione qualquer tecla para continuar...")
 
 os.system("clear")
 print(v_users)
