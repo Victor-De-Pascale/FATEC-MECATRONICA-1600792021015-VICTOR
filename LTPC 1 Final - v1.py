@@ -66,11 +66,13 @@ os.system("clear")
 
 
 
-
+#COMEÇA AQUI
 
 v_users = ""
 v_senhas = ""
 v_emails = ""
+v_saldos = ""
+v_ids = ""
 
 #incompleto
 def f_menu():
@@ -93,18 +95,31 @@ while c_fim_do_programa == False:
     while cf_continuar == True:
       var_criar_nomes = input("Digite o nome do usuario: ")
       var_criar_senhas = input("Digite a senha para este usuario: ")
+      var_criar_saldos = input("Saldo inicial deste usuario: ")
     
       var_add_pev = var_criar_nomes + ";"
       var_add_mail = var_criar_nomes + "@mail;"
       var_add_senha = var_criar_senhas + ";"
+      var_add_saldo = var_criar_saldos + ";"
     
-      v_users = v_users + var_add_pev
-      v_emails = v_emails + var_add_mail
+      v_users = v_users + var_add_pev.upper()
+      v_emails = v_emails + var_add_mail.upper()
       v_senhas = v_senhas + var_add_senha
+      v_saldos = v_saldos + var_add_saldo
+
+      var_contador_usuario = 0
+      for var_caracter in v_users:
+        if var_caracter == ";":
+          var_contador_usuario = var_contador_usuario + 1
+      
+      var_add_id = var_criar_nomes.upper() + ("000%.i" % var_contador_usuario) + ";"
+      v_ids = v_ids + var_add_id
     
-      print(v_users.upper())
-      print(v_emails.upper())
+      print(v_users)
+      print(v_emails)
       print(v_senhas)
+      print(v_saldos)
+      print(v_ids)
     
       input("Pressione qlqr tecla pra continuar...")
       os.system("clear")
