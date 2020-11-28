@@ -13,7 +13,7 @@ def f_menu():
   print("Bem vindo ao banco virtual! Escolha Uma opção para continuar: ")
   print("1- Criar/Adicionar Usuário")
   print("2- Enviar transação")
-  print("3- Receber transação")
+  print("3- Pedir transação")
   print("0- Sair")
 
 #main
@@ -67,6 +67,13 @@ while c_fim_do_programa == False:
         cf_continuar = False
   #if 1  
   
+
+  #if 2
+  elif d_op == 2:
+    if v_qr_code == "":
+      print("Não há requisição de pagamento")
+      input("")
+  #if 2
 
   #if 0
   elif d_op == 0:
