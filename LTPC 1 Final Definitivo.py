@@ -91,6 +91,8 @@ while c_fim_do_programa == False:
         input("Usuario não existe!")
       else:
         v_existe = True
+    os.system("clear")
+    valor_rec = int(input("Indique o valor desejado: "))
     
   #if 3
 
