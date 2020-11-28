@@ -71,9 +71,29 @@ while c_fim_do_programa == False:
   #if 2
   elif d_op == 2:
     if v_qr_code == "":
+      print("")
       print("Não há requisição de pagamento")
       input("")
   #if 2
+
+
+  #if 3
+  elif d_op == 3:
+    v_existe = False
+    while v_existe == False:
+      os.system("clear")
+      user_rec = int(input("Indique, por ID, qual usuário irá receber o pagamento: "))
+      var_contador_usuario = 0
+      for var_caracter in v_users:
+        if var_caracter == ";":
+          var_contador_usuario = var_contador_usuario + 1
+      if user_rec > var_contador_usuario:
+        input("Usuario não existe!")
+      else:
+        v_existe = True
+    
+  #if 3
+
 
   #if 0
   elif d_op == 0:
