@@ -30,6 +30,7 @@ while c_fim_do_programa == False:
     os.system("clear")
     cf_continuar = True
     while cf_continuar == True:
+      os.system("clear")
       var_criar_nomes = input("Digite o nome do usuario: ")
       var_criar_senhas = input("Digite a senha para este usuario: ")
       var_criar_saldos = input("Saldo inicial deste usuario: ")
@@ -78,17 +79,18 @@ while c_fim_do_programa == False:
       input("Pressione qualquer tecla pra continuar...")
     else:
       os.system("clear")
+      V_pagador_existe = False
       valida_pagador = input("Indique o nome do usuário pagador: ")
-      for nome in v_users.split(";"):
-        if nome == valida_pagador:
-          pagador_existe = True
-        else:
-          pagador_existe = False
-      if pagador_existe == False:
-        print("Não existe este usuário!")
-        input("Pressione qualquer tecla pra continuar...")
-    
-    #CONTINUAR AQUI.............
+      valida_pagador = valida_pagador.upper()
+
+      for nomes in v_users.split(';'):
+        if valida_pagador == nomes:
+          V_pagador_existe = True
+      
+      if V_pagador_existe == True:
+        input("existe!")
+      else:
+        input("nao existe!")
 
       #valida_receptor = input("")
       #valida_qrcode = input("")
@@ -137,6 +139,7 @@ while c_fim_do_programa == False:
       input("Anote-o com cuidado!")
 
     else:
+      os.system("clear")
       print("Ja existe um pedido em andamento, impossível fazer outro requerimento no momento!")
       input("Continuar....")
 
