@@ -6,6 +6,7 @@ v_emails = ""
 v_saldos = ""
 v_ids = ""
 v_qr_code = ""
+valor_rec = ""
 import os
 import random
 
@@ -91,10 +92,30 @@ while c_fim_do_programa == False:
           c_indicador_id = c_count
       
       if V_pagador_existe == True:
-        print("")
-        print(valida_pagador)
-        print(c_indicador_id)
-        input("")
+        #verificar saldo dele
+        c_inicial = 0
+        c_final = 0
+        c_pev = 0
+        c_count = 0
+        for caracter in v_saldos:
+          c_count = c_count + 1
+          if caracter == ";":
+            c_pev = c_pev + 1
+            if c_pev == (c_indicador_id - 1):
+              c_inicial = c_count
+            if c_pev == c_indicador_id:
+              c_final = c_count
+        valida_saldo = v_saldos[c_inicial:(c_final - 1)]
+
+        if int(valida_saldo) < int(valor_rec):
+          os.system("clear")
+          print("Verificamos o sistema e parece que o usuário %s não possui saldo suficiente para pagar o valor pedido." % (valida_pagador))
+          print("Então, a ação de pagamento foi cancelada!")
+          input("Pressione qualquer tecla pra continuar...")
+        else:
+          os.system("clear")
+          valida_receptor = input("Indique o nome do receptor: ")
+
 
       else:
         os.system("clear")
