@@ -83,14 +83,24 @@ while c_fim_do_programa == False:
       valida_pagador = input("Indique o nome do usuário pagador: ")
       valida_pagador = valida_pagador.upper()
 
+      c_count = 0
       for nomes in v_users.split(';'):
+        c_count = c_count + 1
         if valida_pagador == nomes:
           V_pagador_existe = True
+          c_indicador_id = c_count
       
       if V_pagador_existe == True:
-        input("existe!")
+        print("")
+        print(valida_pagador)
+        print(c_indicador_id)
+        input("")
+
       else:
-        input("nao existe!")
+        os.system("clear")
+        print("Usuário não existe!")
+        print("")
+        input("Pressione qualquer tecla pra continuar...")
 
       #valida_receptor = input("")
       #valida_qrcode = input("")
