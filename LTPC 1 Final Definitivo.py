@@ -91,40 +91,95 @@ while c_fim_do_programa == False:
           V_pagador_existe = True
           c_indicador_id = c_count
       
-      if V_pagador_existe == True:
-        #verificar saldo dele
-        c_inicial = 0
-        c_final = 0
-        c_pev = 0
-        c_count = 0
-        for caracter in v_saldos:
-          c_count = c_count + 1
-          if caracter == ";":
-            c_pev = c_pev + 1
-            if c_pev == (c_indicador_id - 1):
-              c_inicial = c_count
-            if c_pev == c_indicador_id:
-              c_final = c_count
-        valida_saldo = v_saldos[c_inicial:(c_final - 1)]
+      v_pagador_receptor_igual = False
+      for partes in v_qr_code.split(";"):
+        if valida_pagador == partes:
+          v_pagador_receptor_igual = True
 
-        if int(valida_saldo) < int(valor_rec):
-          os.system("clear")
-          print("Verificamos o sistema e parece que o usuário %s não possui saldo suficiente para pagar o valor pedido." % (valida_pagador))
-          print("Então, a ação de pagamento foi cancelada!")
-          input("Pressione qualquer tecla pra continuar...")
+      if v_pagador_receptor_igual == True:
+        os.system("clear")
+        print("Usuário pagante não pode ser igual ao receptor!")
+        print("Então, a ação de pagamento foi cancelada!")
+        input("Pressione qualquer tecla pra continuar...")
+      else:
+        if V_pagador_existe == True:
+          c_inicial = 0
+          c_final = 0
+          c_pev = 0
+          c_count = 0
+          for caracter in v_saldos:
+            c_count = c_count + 1
+            if caracter == ";":
+              c_pev = c_pev + 1
+              if c_pev == (c_indicador_id - 1):
+                c_inicial = c_count
+              if c_pev == c_indicador_id:
+                c_final = c_count
+          valida_saldo = v_saldos[c_inicial:(c_final - 1)]
+
+          if int(valida_saldo) < int(valor_rec):
+            os.system("clear")
+            print("Verificamos o sistema e parece que o usuário %s não possui saldo suficiente para pagar o valor pedido." % (valida_pagador))
+            print("Então, a ação de pagamento foi cancelada!")
+            input("Pressione qualquer tecla pra continuar...")
+          else:
+            os.system("clear")
+            valida_receptor = input("Indique o nome do receptor: ")
+            valida_receptor = valida_receptor.upper()
+          
+            v_receptor_existe = False
+            for partes in v_qr_code.split(";"):
+              if valida_receptor == partes:
+                v_receptor_existe = True
+
+            if v_receptor_existe == False:
+              print("Usuario receptor incorreto!")
+              print("Então, a ação de pagamento foi cancelada!")
+              input("Pressione qualquer tecla pra continuar...")
+            else:
+              os.system("clear")
+              valida_qr_code = input("Pagamento quase finalizado! Digite o QRCode para realizá-lo: ")
+              valida_qr_code = valida_qr_code.upper()
+              if valida_qr_code != v_qr_code:
+                os.system("clear")
+                print("QRCode incorreto!")
+                print("Então, a ação de pagamento foi cancelada!")
+                input("Pressione qualquer tecla pra continuar...")
+              else:
+                rec_id = int(v_qr_code[0])
+                c_inicial = 0
+                c_final = 0
+                c_pev = 0
+                c_count = 0
+                for valores in v_saldos:
+                  c_count = c_count + 1
+                  if valores == ";":
+                    c_pev = c_pev + 1
+                    if c_pev == (rec_id - 1):
+                      c_inicial = c_count
+                    if c_pev == rec_id:
+                      c_final = c_count
+                valor_saldo_rec = v_saldos[c_inicial:(c_final - 1)]
+
+                novo_valor_pagante = int(valida_saldo) - int(valor_rec) #substitui o valor do saldo do PAGANTE
+                novo_valor_receptor = int(valor_saldo_rec) + int(valor_rec) #substitui o valor do saldo do RECEPTOR
+
+                v_substituicao = v_saldos.replace(valida_saldo, str(novo_valor_pagante))
+                v_saldos = v_substituicao
+                v_substituicao = v_saldos.replace(valor_saldo_rec, str(novo_valor_receptor))
+                v_saldos = v_substituicao
+                v_qr_code = ""
+
+                os.system("clear")
+                print("Pagamento realizado com sucesso...")
+                print("")
+                input("Pressione qualquer tecla pra continuar...")
+
         else:
           os.system("clear")
-          valida_receptor = input("Indique o nome do receptor: ")
-
-
-      else:
-        os.system("clear")
-        print("Usuário não existe!")
-        print("")
-        input("Pressione qualquer tecla pra continuar...")
-
-      #valida_receptor = input("")
-      #valida_qrcode = input("")
+          print("Usuário não existe!")
+          print("")
+          input("Pressione qualquer tecla pra continuar...")
   #if 2
 
 
