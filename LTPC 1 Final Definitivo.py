@@ -7,6 +7,7 @@ v_saldos = ""
 v_ids = ""
 v_qr_code = ""
 import os
+import random
 
 #incompleto
 def f_menu():
@@ -14,6 +15,7 @@ def f_menu():
   print("1- Criar/Adicionar Usuário")
   print("2- Enviar transação")
   print("3- Pedir transação")
+  print("4- Exibir QRCode (ADMIN)")
   print("0- Sair")
 
 #main
@@ -79,20 +81,49 @@ while c_fim_do_programa == False:
 
   #if 3
   elif d_op == 3:
-    v_existe = False
-    while v_existe == False:
+    if v_qr_code == "":
+      v_existe = False
+      while v_existe == False:
+        os.system("clear")
+        user_rec = int(input("Indique, por ID, qual usuário irá receber o pagamento: "))
+        var_contador_usuario = 0
+        for var_caracter in v_users:
+          if var_caracter == ";":
+            var_contador_usuario = var_contador_usuario + 1
+        if user_rec > var_contador_usuario:
+          input("Usuario não existe!")
+        else:
+          v_existe = True
       os.system("clear")
-      user_rec = int(input("Indique, por ID, qual usuário irá receber o pagamento: "))
-      var_contador_usuario = 0
-      for var_caracter in v_users:
-        if var_caracter == ";":
-          var_contador_usuario = var_contador_usuario + 1
-      if user_rec > var_contador_usuario:
-        input("Usuario não existe!")
-      else:
-        v_existe = True
-    os.system("clear")
-    valor_rec = int(input("Indique o valor desejado: "))
+      valor_rec = int(input("Indique o valor desejado: "))
+      os.system("clear")
+
+      c_inicial = 0
+      c_final = 0
+      c_pev = 0
+      c_count = 0
+      for caracter in v_users:
+        c_count = c_count + 1
+        if caracter == ";":
+          c_pev = c_pev + 1
+          if c_pev == (user_rec - 1):
+            c_inicial = c_count
+          if c_pev == user_rec:
+            c_final = c_count
+      
+      v_user_atual = v_users[c_inicial:(c_final - 1)]
+      v_random = random.randrange(1000, 9999)
+
+      v_qr_code = str(user_rec) + ";" + v_user_atual + ";" + str(valor_rec) + ";" + str(v_random)
+      print("QRCode gerado!")
+      print(v_qr_code)
+      print("")
+      input("Anote-o com cuidado!")
+
+    else:
+      print("Ja existe um pedido em andamento, impossível fazer outro requerimento no momento!")
+      input("Continuar....")
+
     
   #if 3
 
@@ -101,6 +132,20 @@ while c_fim_do_programa == False:
   elif d_op == 0:
     c_fim_do_programa = True
   #if 0
+
+
+  #if 4
+  elif d_op == 4:
+    os.system("clear")
+    if v_qr_code == "":
+      print("Não há QRCode a ser mostrado por enquanto..")
+      print("")
+      input("Pressione qualquer tecla para continuar...")
+    else:
+      print(v_qr_code)
+      print("")
+      input("Pressione qualquer tecla para continuar...")
+  #if 4
 
 
   #if erro
