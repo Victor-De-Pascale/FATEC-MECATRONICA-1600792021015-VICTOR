@@ -62,7 +62,7 @@ while c_fim_do_programa == False:
       print(v_ids)
       #tirar
 
-      input("Pressione qlqr tecla pra continuar...")
+      input("Pressione qualquer tecla pra continuar...")
       os.system("clear")
       xyz_op = input("Deseja continuar adicionando usuarios? (s/n) ")
       if xyz_op != "s":
@@ -75,7 +75,23 @@ while c_fim_do_programa == False:
     if v_qr_code == "":
       print("")
       print("Não há requisição de pagamento")
-      input("")
+      input("Pressione qualquer tecla pra continuar...")
+    else:
+      os.system("clear")
+      valida_pagador = input("Indique o nome do usuário pagador: ")
+      for nome in v_users.split(";"):
+        if nome == valida_pagador:
+          pagador_existe = True
+        else:
+          pagador_existe = False
+      if pagador_existe == False:
+        print("Não existe este usuário!")
+        input("Pressione qualquer tecla pra continuar...")
+    
+    #CONTINUAR AQUI.............
+
+      #valida_receptor = input("")
+      #valida_qrcode = input("")
   #if 2
 
 
