@@ -10,7 +10,6 @@ valor_rec = ""
 import os
 import random
 
-#incompleto
 def f_menu():
   print("Bem vindo ao banco virtual! Escolha Uma opção para continuar: ")
   print("1- Criar/Adicionar Usuário")
@@ -18,14 +17,16 @@ def f_menu():
   print("3- Pedir transação")
   print("4- Exibir QRCode (ADMIN)")
   print("5- Exibir saldos (ADMIN)")
+  print("6- Exibir usuários, emails e ID's (ADMIN)")
   print("0- Sair")
+  print("")
 
 #main
 c_fim_do_programa = False
 while c_fim_do_programa == False:
   os.system("clear")
   f_menu()
-  d_op = int(input("Digite uma das opcoes abaixo: "))
+  d_op = int(input("Digite uma das opções acima: "))
   
   #if 1
   if d_op == 1:
@@ -56,18 +57,11 @@ while c_fim_do_programa == False:
       var_add_id = var_criar_nomes.upper() + str(var_contador_usuario) + ";"
       v_ids = v_ids + var_add_id
       #formatação
-
-      #tirar
-      print(v_users)
-      print(v_emails)
-      print(v_senhas)
-      print(v_saldos)
-      print(v_ids)
-      #tirar
-
-      input("Pressione qualquer tecla pra continuar...")
       os.system("clear")
-      xyz_op = input("Deseja continuar adicionando usuarios? (s/n) ")
+      print("Usuário cadastrado com sucesso!")
+      input("Continuar...")
+      os.system("clear")
+      xyz_op = input("Deseja continuar cadastrando usuarios? (s/n) ")
       if xyz_op != "s":
         cf_continuar = False
   #if 1  
@@ -75,8 +69,8 @@ while c_fim_do_programa == False:
 
   #if 2
   elif d_op == 2:
+    os.system("clear")
     if v_qr_code == "":
-      print("")
       print("Não há requisição de pagamento")
       input("Pressione qualquer tecla pra continuar...")
     else:
@@ -186,7 +180,7 @@ while c_fim_do_programa == False:
 
   #if 3
   elif d_op == 3:
-    if v_qr_code == "":
+    if v_qr_code == "" and v_users != "":
       v_existe = False
       while v_existe == False:
         os.system("clear")
@@ -228,7 +222,7 @@ while c_fim_do_programa == False:
 
     else:
       os.system("clear")
-      print("Ja existe um pedido em andamento, impossível fazer outro requerimento no momento!")
+      print("Ja existe um pedido em andamento ou não existem usuários cadastrados ainda! Impossível fazer outro requerimento no momento!")
       input("Continuar....")
   #if 3
 
@@ -254,7 +248,7 @@ while c_fim_do_programa == False:
 
 
   #if 5
-  if d_op == 5:
+  elif d_op == 5:
     os.system("clear")
     if v_saldos == "":
       print("Não existem saldos a serem mostrados por enquanto..")
@@ -265,6 +259,22 @@ while c_fim_do_programa == False:
       print("")
       input("Continuar...")
   #if 5
+
+
+  #if 6
+  elif d_op == 6:
+    os.system("clear")
+    if v_users == "":
+      print("Não há usuários cadastrados por enquanto..")
+      print("")
+      input("Continuar...")
+    else:
+      print(v_users)
+      print(v_emails)
+      print(v_ids)
+      print("")
+      input("Continuar...")
+  #if 6
 
 
   #if erro
