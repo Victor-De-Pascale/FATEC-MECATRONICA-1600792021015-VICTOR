@@ -230,8 +230,6 @@ while c_fim_do_programa == False:
       os.system("clear")
       print("Ja existe um pedido em andamento, impossível fazer outro requerimento no momento!")
       input("Continuar....")
-
-    
   #if 3
 
 
@@ -258,6 +256,14 @@ while c_fim_do_programa == False:
   #if 5
   if d_op == 5:
     os.system("clear")
+    if v_saldos == "":
+      print("Não existem saldos a serem mostrados por enquanto..")
+      print("")
+      input("Continuar...")
+    else:
+      print(v_saldos)
+      print("")
+      input("Continuar...")
   #if 5
 
 
