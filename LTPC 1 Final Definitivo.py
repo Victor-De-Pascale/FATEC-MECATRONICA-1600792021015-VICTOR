@@ -17,6 +17,7 @@ def f_menu():
   print("2- Enviar transação")
   print("3- Pedir transação")
   print("4- Exibir QRCode (ADMIN)")
+  print("5- Exibir saldos (ADMIN)")
   print("0- Sair")
 
 #main
@@ -222,7 +223,8 @@ while c_fim_do_programa == False:
       print("QRCode gerado!")
       print(v_qr_code)
       print("")
-      input("Anote-o com cuidado!")
+      print("Anote-o com cuidado!")
+      input("Continuar....")
 
     else:
       os.system("clear")
@@ -251,6 +253,12 @@ while c_fim_do_programa == False:
       print("")
       input("Pressione qualquer tecla para continuar...")
   #if 4
+
+
+  #if 5
+  if d_op == 5:
+    os.system("clear")
+  #if 5
 
 
   #if erro
