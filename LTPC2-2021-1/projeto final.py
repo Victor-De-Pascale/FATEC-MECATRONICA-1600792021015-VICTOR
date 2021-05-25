@@ -7,13 +7,7 @@ op_jogada[2] = "TESOURA"
 op_jogada[3] = "LAGARTO"
 op_jogada[4] = "SPOCK"
 
-#exluir td isso aqui
-xyz_nome = True
-xyz_op = False
-xyz_maquina = True
-#ate aqui
-
-#excluir ao final, comando pro player fazer sua escolha
+#comando pro player fazer sua escolha, excluir ao final pois aqui sera um botao
 op_player = int(input("Escolha uma opçao ae "))
 
 #escolha da maquina com random
