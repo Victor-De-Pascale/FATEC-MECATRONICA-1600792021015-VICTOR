@@ -12,40 +12,43 @@ def vamosJogar():
   maquina_joga = random.randint(0, 4)
   return player_joga, maquina_joga
 
+def verificaJogada(op_player, op_maquina):
+  resultado = "EMPATE"
+  if op_player == 0: #PEDRA
+    if (op_maquina == 1) or (op_maquina == 4):
+      resultado = "DERROTA"
+    elif (op_maquina == 2) or (op_maquina == 3):
+      resultado = "VITORIA"
+
+  elif op_player == 1: #PAPEL
+    if (op_maquina == 2) or (op_maquina == 3):
+      resultado = "DERROTA"
+    elif (op_maquina == 0) or (op_maquina == 4):
+      resultado = "VITORIA"
+
+  elif op_player == 2: #TESOURA
+    if (op_maquina == 0) or (op_maquina == 4):
+      resultado = "DERROTA"
+    elif (op_maquina == 1) or (op_maquina == 3):
+      resultado = "VITORIA"
+
+  elif op_player == 3: #LAGARTO
+    if (op_maquina == 0) or (op_maquina == 2):
+      resultado = "DERROTA"
+    elif (op_maquina == 1) or (op_maquina == 4):
+      resultado = "VITORIA"
+
+  elif op_player == 4: #SPOCK
+    if (op_maquina == 1) or (op_maquina == 3):
+      resultado = "DERROTA"
+    elif (op_maquina == 0) or (op_maquina == 2):
+      resultado = "VITORIA"
+  return resultado
+
 op_player, op_maquina = vamosJogar()
-
-resultado = "EMPATE"
-if op_player == 0: #PEDRA
-  if (op_maquina == 1) or (op_maquina == 4):
-    resultado = "DERROTA"
-  elif (op_maquina == 2) or (op_maquina == 3):
-    resultado = "VITORIA"
-
-elif op_player == 1: #PAPEL
-  if (op_maquina == 2) or (op_maquina == 3):
-    resultado = "DERROTA"
-  elif (op_maquina == 0) or (op_maquina == 4):
-    resultado = "VITORIA"
-
-elif op_player == 2: #TESOURA
-  if (op_maquina == 0) or (op_maquina == 4):
-    resultado = "DERROTA"
-  elif (op_maquina == 1) or (op_maquina == 3):
-    resultado = "VITORIA"
-
-elif op_player == 3: #LAGARTO
-  if (op_maquina == 0) or (op_maquina == 2):
-    resultado = "DERROTA"
-  elif (op_maquina == 1) or (op_maquina == 4):
-    resultado = "VITORIA"
-
-elif op_player == 4: #SPOCK
-  if (op_maquina == 1) or (op_maquina == 3):
-    resultado = "DERROTA"
-  elif (op_maquina == 0) or (op_maquina == 2):
-    resultado = "VITORIA"
+result = verificaJogada(op_player, op_maquina)
 
 print("")
-print(resultado)
+print(result)
 print(f"Seu adversário escolheu {op_jogada[op_maquina]}...")
 print(f"Voce escolheu {op_jogada[op_player]}...")
