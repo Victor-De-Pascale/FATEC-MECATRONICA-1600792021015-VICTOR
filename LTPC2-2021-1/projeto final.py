@@ -7,45 +7,45 @@ op_jogada[2] = "TESOURA"
 op_jogada[3] = "LAGARTO"
 op_jogada[4] = "SPOCK"
 
-#comando pro player fazer sua escolha, excluir ao final pois aqui sera um botao
-op_player = int(input("Escolha uma opçao ae "))
+def vamosJogar():
+  player_joga = int(input("Escolha sua jogada: "))
+  maquina_joga = random.randint(0, 4)
+  return player_joga, maquina_joga
 
-#escolha da maquina com random
-op_maquina = random.choice(op_jogada)
+op_player, op_maquina = vamosJogar()
 
-#comparação
 resultado = "EMPATE"
 if op_player == 0: #PEDRA
-  if (op_maquina == "PAPEL") or (op_maquina == "SPOCK"):
+  if (op_maquina == 1) or (op_maquina == 4):
     resultado = "DERROTA"
-  elif (op_maquina == "TESOURA") or (op_maquina == "LAGARTO"):
+  elif (op_maquina == 2) or (op_maquina == 3):
     resultado = "VITORIA"
 
 elif op_player == 1: #PAPEL
-  if (op_maquina == "TESOURA") or (op_maquina == "LAGARTO"):
+  if (op_maquina == 2) or (op_maquina == 3):
     resultado = "DERROTA"
-  elif (op_maquina == "PEDRA") or (op_maquina == "SPOCK"):
+  elif (op_maquina == 0) or (op_maquina == 4):
     resultado = "VITORIA"
 
 elif op_player == 2: #TESOURA
-  if (op_maquina == "PEDRA") or (op_maquina == "SPOCK"):
+  if (op_maquina == 0) or (op_maquina == 4):
     resultado = "DERROTA"
-  elif (op_maquina == "PAPEL") or (op_maquina == "LAGARTO"):
+  elif (op_maquina == 1) or (op_maquina == 3):
     resultado = "VITORIA"
 
 elif op_player == 3: #LAGARTO
-  if (op_maquina == "PEDRA") or (op_maquina == "TESOURA"):
+  if (op_maquina == 0) or (op_maquina == 2):
     resultado = "DERROTA"
-  elif (op_maquina == "PAPEL") or (op_maquina == "SPOCK"):
+  elif (op_maquina == 1) or (op_maquina == 4):
     resultado = "VITORIA"
 
 elif op_player == 4: #SPOCK
-  if (op_maquina == "PAPEL") or (op_maquina == "LAGARTO"):
+  if (op_maquina == 1) or (op_maquina == 3):
     resultado = "DERROTA"
-  elif (op_maquina == "PEDRA") or (op_maquina == "TESOURA"):
+  elif (op_maquina == 0) or (op_maquina == 2):
     resultado = "VITORIA"
 
 print("")
 print(resultado)
-print(f"Seu adversário escolheu {op_maquina}...")
+print(f"Seu adversário escolheu {op_jogada[op_maquina]}...")
 print(f"Voce escolheu {op_jogada[op_player]}...")
