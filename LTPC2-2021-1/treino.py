@@ -10,9 +10,18 @@ op_jogada[4] = "SPOCK"
 
 rodajogo = True
 
-def vamosJogar():
+def vamosJogar(op_item):
   print("")
-  player_joga = int(input("Escolha sua jogada: "))
+  playerburro = True
+  while playerburro == True:
+    player_joga = int(input("Escolha sua jogada: "))
+    if ((player_joga < 0) or (player_joga > 4)):
+      os.system("clear")
+      print("ESCOLHA UMA DAS OPÇÕES KRL")
+      for item in op_item.keys():
+        print("")
+    else:
+      playerburro = False
   maquina_joga = random.randint(0, 4)
   return player_joga, maquina_joga
 
@@ -73,7 +82,7 @@ while rodajogo == True:
   if op_menu == 0:
     rodajogo = False
   elif op_menu == 1:
-    op_player, op_maquina = vamosJogar()
+    op_player, op_maquina = vamosJogar(op_jogada)
     result = verificaJogada(op_player, op_maquina)
     mostrarResultado(result, op_player, op_maquina, op_jogada)
   elif op_menu == 2:
