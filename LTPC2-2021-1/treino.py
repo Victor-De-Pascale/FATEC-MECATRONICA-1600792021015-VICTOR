@@ -11,6 +11,7 @@ op_jogada[4] = "SPOCK"
 rodajogo = True
 
 def vamosJogar():
+  print("")
   player_joga = int(input("Escolha sua jogada: "))
   maquina_joga = random.randint(0, 4)
   return player_joga, maquina_joga
