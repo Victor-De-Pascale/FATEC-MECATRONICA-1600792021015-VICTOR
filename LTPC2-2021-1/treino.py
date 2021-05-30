@@ -19,7 +19,7 @@ def vamosJogar(op_item):
       os.system("clear")
       print("ESCOLHA UMA DAS OPÇÕES KRL")
       for item in op_item.keys():
-        print("")
+        print(f"OPÇÃO {op_item[item]} - VALOR {item}")
     else:
       playerburro = False
   maquina_joga = random.randint(0, 4)
