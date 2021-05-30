@@ -1,4 +1,5 @@
 import random
+import os
 
 op_jogada = {}
 op_jogada[0] = "PEDRA"
@@ -7,10 +8,30 @@ op_jogada[2] = "TESOURA"
 op_jogada[3] = "LAGARTO"
 op_jogada[4] = "SPOCK"
 
+rodajogo = True
+
 def vamosJogar():
   player_joga = int(input("Escolha sua jogada: "))
   maquina_joga = random.randint(0, 4)
   return player_joga, maquina_joga
+
+def menuMain():
+  os.system("clear")
+  print("BEM VINDO AO EXPERT JOKENPO!")
+  print("ESCOLHA UMA DAS OPÇÕES ABAIXO PARA CONTINUAR")
+  print("[1] JOGAR")
+  print("[2] MOSTRAR HISTORICO")
+  print("[0] SAIR")
+
+def mostrarResultado(resultado, c_player, c_maquina, c_jogada):
+  os.system("clear")
+  print(resultado)
+  print(f"Seu adversário escolheu {c_jogada[c_maquina]}...")
+  print(f"Voce escolheu {c_jogada[c_player]}...")
+  input("")
+
+def mostrarHistorico():
+  print("")
 
 def verificaJogada(op_player, op_maquina):
   resultado = "EMPATE"
@@ -45,10 +66,17 @@ def verificaJogada(op_player, op_maquina):
       resultado = "VITORIA"
   return resultado
 
-op_player, op_maquina = vamosJogar()
-result = verificaJogada(op_player, op_maquina)
-
-print("")
-print(result)
-print(f"Seu adversário escolheu {op_jogada[op_maquina]}...")
-print(f"Voce escolheu {op_jogada[op_player]}...")
+while rodajogo == True:
+  menuMain()
+  op_menu = int(input("Sua opção: "))
+  if op_menu == 0:
+    rodajogo = False
+  elif op_menu == 1:
+    op_player, op_maquina = vamosJogar()
+    result = verificaJogada(op_player, op_maquina)
+    mostrarResultado(result, op_player, op_maquina, op_jogada)
+  elif op_menu == 2:
+    print("")
+  else:
+    print("Opção inválida!")
+    input("")
