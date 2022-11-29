@@ -19,10 +19,9 @@ while contador < 4:
 x_lista_principal = []
 x_lista_dentro_de_lista = []
 contador = 0
-while contador < 4:
+while contador < 11:
   #reset de lista
   contador_lista = 0
-  x_lista_dentro_de_lista.clear()
   while contador_lista < (len(op_facin)):
     x_lista_dentro_de_lista.append(op_facin[contador_lista])
     contador_lista = contador_lista + 1
@@ -37,13 +36,12 @@ while contador < 4:
       contador_remocao = contador_remocao + 1
   #deixar 15 numeros
 
-  #adicionar na lista principal
-  x_lista_principal.append(x_lista_dentro_de_lista)
   print(f"LISTA: {(contador + 1)}")
-  print(x_lista_principal[contador])
+  print(x_lista_dentro_de_lista)
   print("")
-  contador = contador + 1
   #adicionar na lista principal
+  x_lista_dentro_de_lista.clear()
+  contador = contador + 1
 
 lista_permaban.sort()
 print("Permanente: ", op_facin) #teste
@@ -52,18 +50,4 @@ print("Permaban: ", lista_permaban)
 print("")
 #print("Item da posicao 5 da lista principal: ", op_facin[5])
 #print("")
-#print(len(op_facin))
-#print("")
 #print(len(lista_permaban))
-#print(f"OPÇÃO {op_item[item]} - VALOR {item}")
-
-#escolher 4 numeros aleatorios;
-#  -verificar repetiçoes
-#FEITO
-
-#remover os 4 numeros da lista; 
-#FEITO
-
-#gerar listas de 15 numeros aleatorios
-#  -copiar lista original, por que terá reset
-#  -gerar 30 listas, verificando repetição
