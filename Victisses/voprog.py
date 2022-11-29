@@ -20,23 +20,31 @@ x_lista_principal = []
 x_lista_dentro_de_lista = []
 contador_lista = 0
 contador = 0
-while contador < 31:
+while contador < 4:
   #reset de lista
   contador_lista = 0
-  while contador_lista < (len(op_facin) + 1):
+  x_lista_dentro_de_lista.clear()
+  while contador_lista < (len(op_facin)):
+    print(contador_lista)
     x_lista_dentro_de_lista.append(op_facin[contador_lista])
     contador_lista = contador_lista + 1
   #reset de lista
 
   #deixar 15 numeros
-  contador_remocao = 0
-  while contador_remocao < 10:
+  contador_remocao = 1
+  while contador_remocao < 7:
     x_rnd_n = random.randrange(1, 25)
     if x_lista_dentro_de_lista.count(x_rnd_n) == 1:
       x_lista_dentro_de_lista.remove(x_rnd_n)
       contador_remocao = contador_remocao + 1
   #deixar 15 numeros
-  
+
+  #adicionar na lista principal
+  x_lista_principal.append(x_lista_dentro_de_lista)
+  print(x_lista_principal[contador])
+  input("")
+  os.system("clear")
+  #adicionar na lista principal
   contador = contador + 1
 
 lista_permaban.sort()
@@ -49,6 +57,7 @@ print("")
 print(len(op_facin))
 print("")
 print(len(lista_permaban))
+
 
 #escolher 4 numeros aleatorios;
 #  -verificar repetiçoes
