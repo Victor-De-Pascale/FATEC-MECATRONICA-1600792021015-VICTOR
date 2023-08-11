@@ -36,8 +36,16 @@ def xyz_activate_menu():
 def xyz_create_user():
   xyz_name = input("Digite o nome do novo usuário: ")
   xyz_pw = input("Digite a senha: ")
-  xyz_saldo = input("Digite o saldo inicial: ")
-  print("")
+  xyz_valid_op = False
+  while xyz_valid_op == False:
+    xyz_saldo = input("Digite o saldo inicial: ")
+    xyz_verify = xyz_int_verify(xyz_saldo)
+    if xyz_verify == 1:
+      xyz_valid_op = True
+  print(xyz_name)
+  print(xyz_pw)
+  print(xyz_saldo)
+  input("")
 
 #main
 xyz_end = False
