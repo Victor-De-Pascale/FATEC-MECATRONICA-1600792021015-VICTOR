@@ -19,8 +19,8 @@ def xyz_int_verify(xyz_txt):
     os.system("clear")
     input("Por favor digite um número!")
   else:
-    xyz_valid = True
-  return xyz_valid
+    xyz_valid = 1
+    return xyz_valid
 
 def xyz_activate_menu():
   xyz_valid_op = False
@@ -28,13 +28,8 @@ def xyz_activate_menu():
     os.system("clear")
     xyz_menu()
     xyz_op = input("Selecione uma das opções acima: ")
-    xyz_valid_op = xyz_int_verify(xyz_op)
-    try:
-      int(xyz_op)
-    except:
-      os.system("clear")
-      input("Opção inválida!")
-    else:
+    xyz_verify = xyz_int_verify(xyz_op)
+    if xyz_verify == 1:
       xyz_valid_op = True
   return xyz_op
 
