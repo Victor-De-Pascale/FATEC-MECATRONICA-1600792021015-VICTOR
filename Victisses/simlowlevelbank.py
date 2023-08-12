@@ -1,6 +1,12 @@
 import os
 import random
 
+def clear():
+  os.system("clear")
+
+def skip():
+  print("")
+
 def xyz_menu():
   print("Bem vindo ao banco virtual! Escolha Uma opção para continuar: ")
   print("1- Criar/Adicionar Usuário")
@@ -16,8 +22,10 @@ def xyz_int_verify(xyz_txt):
   try:
     int(xyz_txt)
   except:
-    os.system("clear")
-    input("Por favor digite um número!")
+    skip()
+    #os.system("clear")
+    print("Por favor digite um número!")
+    input("")
   else:
     xyz_valid = 1
     return xyz_valid
@@ -34,8 +42,11 @@ def xyz_activate_menu():
   return xyz_op
 
 def xyz_create_user():
+  os.system("clear")
   xyz_name = input("Digite o nome do novo usuário: ")
+  print("")
   xyz_pw = input("Digite a senha: ")
+  print("")
   xyz_valid_op = False
   while xyz_valid_op == False:
     xyz_saldo = input("Digite o saldo inicial: ")
@@ -53,9 +64,16 @@ while xyz_end == False:
   xyz_op = int(xyz_activate_menu())
   
   if xyz_op == 0:
-    os.system("clear")
+    clear()
     print("Finalizado!")
     xyz_end = True
 
   elif xyz_op == 1:
     xyz_create_user()
+
+  elif xyz_op == 9:
+    skip()
+
+  else:
+    skip()
+    input("kk testou agora volta")
