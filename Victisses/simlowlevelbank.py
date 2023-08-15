@@ -16,7 +16,7 @@ def xyz_menu():
   print("5- Exibir saldos (ADMIN)")
   print("6- Exibir usuários, emails e ID's (ADMIN)")
   print("0- Sair")
-  print("")
+  skip()
 
 def xyz_int_verify(xyz_txt):
   try:
@@ -33,7 +33,7 @@ def xyz_int_verify(xyz_txt):
 def xyz_activate_menu():
   xyz_valid_op = False
   while xyz_valid_op == False:
-    os.system("clear")
+    clear()
     xyz_menu()
     xyz_op = input("Selecione uma das opções acima: ")
     xyz_verify = xyz_int_verify(xyz_op)
@@ -42,11 +42,11 @@ def xyz_activate_menu():
   return xyz_op
 
 def xyz_create_user():
-  os.system("clear")
+  clear()
   xyz_name = input("Digite o nome do novo usuário: ")
-  print("")
+  skip()
   xyz_pw = input("Digite a senha: ")
-  print("")
+  skip()
   xyz_valid_op = False
   while xyz_valid_op == False:
     xyz_saldo = input("Digite o saldo inicial: ")
@@ -70,9 +70,6 @@ while xyz_end == False:
 
   elif xyz_op == 1:
     xyz_create_user()
-
-  elif xyz_op == 9:
-    skip()
 
   else:
     skip()
